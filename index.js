@@ -29,7 +29,7 @@ function get(p12Path, password, cb) {
                             info.sha1 = sha1
                             // 获取公钥
                             textfile.read(pemPath, 'string', (str) => {
-                                var publicKey = str.match(/-----BEGIN CERTIFICATE-----\n((?:.+\n)+.+==)/)
+                                var publicKey = str.match(/-----BEGIN CERTIFICATE-----\n((?:\S+\n)+)-----END CERTIFICATE-----/)
                                 info.publicKey = publicKey[1].replace(/\n/g, '')
                                 var eveloper = str.match(/friendlyName\:\s([a-zA-Z\s]+)\:\s(.+)\s\(([A-Z0-9]+)/)
                                 info.type = eveloper[1]
