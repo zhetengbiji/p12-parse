@@ -39,8 +39,8 @@ function get(p12Path, password, cb) {
                                 }
                                 var team = str.match(/OU\=([A-Z0-9]+)\/O\=(.+)\//)
                                 info.team = {
-                                    id: team[2],
-                                    name: team[1],
+                                    id: team[1],
+                                    name: team[2],
                                 }
                                 del(cerPath, {
                                     force: true
