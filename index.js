@@ -31,11 +31,11 @@ function get(p12Path, password, cb) {
                             textfile.read(pemPath, 'string', (str) => {
                                 var publicKey = str.match(/-----BEGIN CERTIFICATE-----\n((?:\S+\n)+)-----END CERTIFICATE-----/)
                                 info.publicKey = publicKey[1].replace(/\n/g, '')
-                                var eveloper = str.match(/friendlyName\:\s([a-zA-Z\s]+)\:\s(.+)\s\(([A-Z0-9]+)/)
-                                info.type = eveloper[1]
-                                info.eveloper = {
-                                    id: eveloper[3],
-                                    name: eveloper[2],
+                                var developer = str.match(/friendlyName\:\s([a-zA-Z\s]+)\:\s(.+)\s\(([A-Z0-9]+)/)
+                                info.type = developer[1]
+                                info.developer = {
+                                    id: developer[3],
+                                    name: developer[2],
                                 }
                                 var team = str.match(/OU\=([A-Z0-9]+)\/O\=(.+)\//)
                                 info.team = {
