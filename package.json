@@ -1,6 +1,6 @@
 {
   "name": "p12-parse",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "p12-parse",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "del": "^3.0.0",
-    "textfile": "^1.0.2"
+    "textfile": "^1.1.2"
   }
 }

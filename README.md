@@ -7,7 +7,8 @@ npm i p12-parse --save
 ```js
 var p12=require('p12-parse')
 
-p12('xxx.p12', 'password', info => {
-    console.log(info)
-})
+p12('xxx.p12', 'password')
+    .then(info => {
+        console.log(info)
+    })
 ```
