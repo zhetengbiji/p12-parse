@@ -1,6 +1,6 @@
 {
   "name": "p12-parse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "p12-parse",
   "main": "index.js",
   "scripts": {

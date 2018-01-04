@@ -43,6 +43,9 @@ function get(p12Path, password, cb) {
             var publicKey = str.match(/-----BEGIN CERTIFICATE-----\n((?:\S+\n)+)-----END CERTIFICATE-----/)
             info.publicKey = publicKey[1].replace(/\n/g, '')
             var developer = str.match(/friendlyName\:\s([a-zA-Z\s]+)\:\s(.+)\s\(([A-Z0-9]+)/)
+            if(!developer) {
+                developer = str.match(/friendlyName\:\s([a-zA-Z\s]+)\:\s(.+)\n/)
+            }
             info.type = developer[1]
             info.developer = {
                 id: developer[3],
