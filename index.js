@@ -22,20 +22,20 @@ function get(p12Path, password, cb) {
     var pemPath = path.join(__dirname, 'pem.pem')
     var cerPath = path.join(__dirname, 'cer.cer')
     var info = {}
-    // 转换pem
+    // to pem
     return exec(`openssl pkcs12 -in ${p12Path} -passin pass:${password} -out ${pemPath}  -nodes`)
-        // 转换cer
+        // to cer
         .then(() => {
             return exec(`openssl x509 -outform der -in ${pemPath} -out ${cerPath}`)
         })
-        // 获取sha1
+        // get sha1
         .then(() => {
             return exec(`shasum ${cerPath}`)
         })
         .then(stdout => {
             info.sha1 = stdout.split(' ')[0].toUpperCase()
         })
-        // 获取公钥信息
+        // get public key info
         .then(() => {
             return textfile.read(pemPath, 'string')
         })
@@ -57,7 +57,7 @@ function get(p12Path, password, cb) {
                 name: team[2],
             }
         })
-        // 清理
+        // clear
         .then(() => {
             return del(cerPath, {
                 force: true

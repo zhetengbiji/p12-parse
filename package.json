@@ -1,22 +1,28 @@
 {
   "name": "p12-parse",
-  "version": "0.1.1",
-  "description": "p12-parse",
+  "version": "0.2.0",
+  "description": "Uses javascript to parse the contents of the p12 formatted certificate file.",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhetengbiji/p12-parse.git"
+    "url": "git+https://github.com/zhetengbiji/p12-parse.git"
   },
   "keywords": [
-    "p12"
+    "p12",
+    "certificate",
+    "parse"
   ],
-  "author": "guoshengqiang",
+  "author": "Shengqiang Guo",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhetengbiji/p12-parse/issues"
+  },
+  "homepage": "https://github.com/zhetengbiji/p12-parse#readme",
   "dependencies": {
     "del": "^3.0.0",
-    "textfile": "^1.1.2"
+    "textfile": "^1.2.0"
   }
 }
