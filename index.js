@@ -2,6 +2,7 @@ var child_process = require('child_process')
 var path = require('path')
 var del = require('del')
 var textfile = require('textfile')
+var escape = require('shell-argument-escape').escape
 
 function exec(cmd, opt) {
     opt = Object.assign({
@@ -23,14 +24,14 @@ function get(p12Path, password, cb) {
     var cerPath = path.join(__dirname, 'cer.cer')
     var info = {}
     // to pem
-    return exec(`openssl pkcs12 -in ${p12Path} -passin pass:${password} -out ${pemPath}  -nodes`)
+    return exec(`openssl pkcs12 -in ${escape(p12Path)} -passin pass:${escape(password)} -out ${escape(pemPath)}  -nodes`)
         // to cer
         .then(() => {
-            return exec(`openssl x509 -outform der -in ${pemPath} -out ${cerPath}`)
+            return exec(`openssl x509 -outform der -in ${escape(pemPath)} -out ${escape(cerPath)}`)
         })
         // get sha1
         .then(() => {
-            return exec(`shasum ${cerPath}`)
+            return exec(`shasum ${escape(cerPath)}`)
         })
         .then(stdout => {
             info.sha1 = stdout.split(' ')[0].toUpperCase()
